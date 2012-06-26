@@ -1,0 +1,19 @@
+Probleme
+
+- Problem 1
+In den Videos der Nodes (zB Node_49021.avi) sieht man, das zeitweise zB die diskGasMass auf Null abfällt, und plötzlich wieder ansteigt
+
+- Problem 2
+In meiner Simulation mit Output zu allen Zeitschritten (/RAID3/markus/galacticus_692/galacticus/galacticus.hdf5), hat Galacticus in den letzten beiden Zeitschritten der Global Star Formation History lächerlich Hohe OUtputs Sachen, hier der Python Output
+In [21]: h5file.root.globalHistory.historyStarFormationRate[28]
+Out[21]: 1.5311307607233185e+49
+
+In [22]: h5file.root.globalHistory.historyStarFormationRate[29]
+Out[22]: 6.8741850145074521e+26
+
+vergleich zu einem früheren Output
+
+In [24]: h5file.root.globalHistory.historyStarFormationRate[5]
+Out[24]: 125069556.12959215
+
+

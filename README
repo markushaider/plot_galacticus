@@ -1,0 +1,46 @@
+This collection of files allows to plot galacticus output files using matplotlib for plotting and pytables for reading hdf5. Numpy is also required.
+
+Under Ubuntu this packages can be installed via
+apt-get install python-matplotlib
+apt-get install python-tables
+apt-get install python-numpy
+
+The path to the galacticus file is hardcoded in all the files at the moment. Most of the files produce a plot for all the different timesteps, some of them output the files to the folders in this directory.
+General Usage: python plot***.py
+
+- plotGlobalHistory.py
+Plots the global data (like volume averaged star formation rate) versus time (redshift). The data is read from the globalHistory group already present in the Galacticus output
+
+- plotHistograms.py
+Plots a histogram of a specified quantity at a given timestep, e.g. a histogram of the disk masses of all the nodes
+
+- plotPositions.py
+Outputs a 3d plot of the whole volume of our simulations. If necessary, don't forget to change the boxsize and the axes limits. Produces also an output of the center region, where we can also color code our nodes according to a specified data field
+
+- getNodeHistory.py
+Here we can specify a halo at z=0 and it is tracked backwards through time, and the specified quantities are written into a nodeHistory.pkl, which can then be used by plotNodeHistory.py. The chosen halo can be given as argument.
+
+- getData.py
+Helper functions which construct a table of the timesteps from the galacticus file and retrieve
+the nodeData for a specified timestep.
+
+- plotNodeHistory.py
+Plot the evolution of some quantities (e.g. star formation rate) versus time, and showing the position of the node at the same time in another plot. Needs the file nodeHistory_#.pkl as input. In order to save time, also the timeTable is read from file timeTable.pkl (created by getNodeHistory.py). Plotting the node history is automated by makeAllNodeHistory.py, therefore plotNodeHistory.py takes the following input parameters:
+<arrayIndex (of selected node) at z=0> <tIndexStart> <tIndexEnd>
+
+- movie.py
+Simple script which uses mencoder to make a movie out of plots at different times. Parameters need to be changed in the file.
+
+- makeAllNodeHistory.py
+Automates the generation of the NodeHistory plots, and therefore calls getNodeHistory.py and plotNodeHistory.py. One has to pass the arrayIndex of the node for which we want the history to be plotted as argument, e.g.[
+markus@astro-cluster1 ~]$ python makeAllNodeHistory.py 250
+The plots will be written into the folder nodeHistory/#
+
+- makeAllNodeHistory.py
+Automates the generation of the Histogram plots
+
+- makeNodeMovie.py 
+Calls getNodeHistory,py and then plotNodeHistory.py and then makes a movie from the output. The array index of the node which should be plotted has to be given as argument.
+
+Happy plotting,
+Markus
