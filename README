@@ -42,5 +42,8 @@ Automates the generation of the Histogram plots
 - makeNodeMovie.py 
 Calls getNodeHistory,py and then plotNodeHistory.py and then makes a movie from the output. The array index of the node which should be plotted has to be given as argument.
 
+- plotNumberOfHalos.py
+In this file you have to specify the galacticus input file then it will give you a histogram of the number of halos for a given halo mass.
+
 Happy plotting,
 Markus
